@@ -88,10 +88,10 @@ function calculateRoute() {
 
     const travelMinutes = isSouthbound 
         ? Math.abs(destSt.offsetSouth - originSt.offsetSouth)
-        : Math.abs((40 - destSt.offsetSouth) - (40 - originSt.offsetSouth));
+        : Math.abs((39 - destSt.offsetSouth) - (39 - originSt.offsetSouth));
 
     const baseTimes = isSouthbound ? activeSchedule.southTimes : activeSchedule.northTimes;
-    const offset = isSouthbound ? originSt.offsetSouth : (40 - originSt.offsetSouth);
+    const offset = isSouthbound ? originSt.offsetSouth : (39 - originSt.offsetSouth);
 
     const stationSchedule = baseTimes.map(t => toTimeString(toMinutes(t) + offset));
     const userMin = toMinutes(userTimeStr);

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسیریاب و زمان‌بندی مترو اصفهان</title>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3448/3448339.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🚈 برنامه‌ریزی سفر و زمان‌بندی مترو اصفهان</h1>
+        <p id="updateStatus">در حال دریافت برگه زمان‌بندی...</p>
+    </header>
+
+    <div class="controls">
+        <div class="form-group">
+            <label for="originSelect">ایستگاه مبدا:</label>
+            <select id="originSelect"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="destSelect">ایستگاه مقصد:</label>
+            <select id="destSelect"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="timeInput">زمان حضور در مبدا:</label>
+            <input type="time" id="timeInput">
+        </div>
+
+        <button class="btn-now" id="nowBtn">تنظیم به زمان جاری</button>
+    </div>
+
+    <div class="route-summary">
+        <div class="route-title" id="routeTitle">اطلاعات مسیر سفر</div>
+        <div class="route-details">
+            <div class="card">
+                <div class="card-label">تعداد ایستگاه‌ها</div>
+                <div class="card-value" id="stationCount">-</div>
+            </div>
+            <div class="card">
+                <div class="card-label">مدت زمان داخل قطار</div>
+                <div class="card-value" id="travelTime">-</div>
+            </div>
+            <div class="card">
+                <div class="card-label">حرکت قطار بعدی از مبدا</div>
+                <div class="card-value" id="nextTrainTime">-</div>
+            </div>
+            <div class="card">
+                <div class="card-label">زمان تقریبی رسیدن به مقصد</div>
+                <div class="card-value" id="arrivalTime">-</div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h3>📋 جدول کامل زمان‌بندی حرکت از ایستگاه مبدا</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ردیف</th>
+                        <th>ساعت حرکت قطار</th>
+                        <th>وضعیت</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>بر اساس اطلاعات رسمی شرکت مترو منطقه اصفهان</footer>
+</div>
+
+<script src="app.js"></script>
+
+<!-- ثبت Service Worker برای PWA -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Service Worker registrado:', reg.scope))
+                .catch(err => console.log('Service Worker error:', err));
+        });
+    }
+</script>
+</body>
+</html>

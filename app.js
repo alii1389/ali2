@@ -105,7 +105,7 @@ function calculateRoute() {
     if (booleanCheckbox.checked) {
         for (let i = 0; i < stationScheduledst.length; i++) {
             const trainMin = toMinutes(stationScheduledst[i]);
-            if (trainMin <= userMin) {
+            if (trainMin >= userMin) {
                 nextTrainMin = trainMin-(travelMinutes);
                 firstUpcomingIdx = i;
                 break;

@@ -60,7 +60,8 @@ function setCurrentTime() {
 // ۳. محاسبه مسیر و نمایش زمان‌بندی
 function calculateRoute() {
     if (!scheduleData || !stationsList.length) return;
-
+    if (booleanCheckbox.checked){document.getElementsByTagName('label')[2].innerHTML='زمان حضور در مقصد'
+    }else{document.getElementsByTagName('label')[2].innerHTML='زمان حضور در مبدا'}
     const originIdx = parseInt(originSelect.value);
     const destIdx = parseInt(destSelect.value);
     const userTimeStr = timeInput.value;
@@ -107,7 +108,7 @@ function calculateRoute() {
             const trainMin = toMinutes(stationScheduledst[i]);
             if (trainMin >= userMin) {
                 nextTrainMin = trainMin-(travelMinutes);
-                firstUpcomingIdx = i;
+                firstUpcomingIdx = i-1;
                 break;
             }
         }

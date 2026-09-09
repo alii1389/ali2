@@ -5,6 +5,7 @@ const originSelect = document.getElementById('originSelect');
 const destSelect = document.getElementById('destSelect');
 const timeInput = document.getElementById('timeInput');
 const nowBtn = document.getElementById('nowBtn');
+const booleanCheckbox = document.getElementById('checkbox');
 
 // ۱. بارگذاری اطلاعات از schedule.json
 async function loadScheduleData() {
@@ -92,22 +93,35 @@ function calculateRoute() {
 
     const baseTimes = isSouthbound ? activeSchedule.southTimes : activeSchedule.northTimes;
     const offset = isSouthbound ? originSt.offsetSouth : (39 - originSt.offsetSouth);
+    const offsetdst = isSouthbound ? destSt.offsetSouth : (39 - destSt.offsetSouth);
+
 
     const stationSchedule = baseTimes.map(t => toTimeString(toMinutes(t) + offset));
+    const stationScheduledst = baseTimes.map(t => toTimeString(toMinutes(t) + offsetdst));
     const userMin = toMinutes(userTimeStr);
 
     let nextTrainMin = -1;
     let firstUpcomingIdx = -1;
+    if (booleanCheckbox.checked) {
+        for (let i = 0; i < stationScheduledst.length; i++) {
+            const trainMin = toMinutes(stationScheduledst[i]);
+            if (trainMin <= userMin) {
+                nextTrainMin = trainMin-(travelMinutes);
+                firstUpcomingIdx = i;
+                break;
+            }
+        }
 
-    for (let i = 0; i < stationSchedule.length; i++) {
-        const trainMin = toMinutes(stationSchedule[i]);
-        if (trainMin >= userMin) {
-            nextTrainMin = trainMin;
-            firstUpcomingIdx = i;
-            break;
+    }else{
+        for (let i = 0; i < stationSchedule.length; i++) {
+            const trainMin = toMinutes(stationSchedule[i]);
+            if (trainMin >= userMin) {
+                nextTrainMin = trainMin;
+                firstUpcomingIdx = i;
+                break;
+            }
         }
     }
-
     const dirText = isSouthbound ? "به سمت جنوب (صفه)" : "به سمت شمال (قدس)";
     const dayTag = isFriday ? " [برنامه روز جمعه]" : " [برنامه روزهای عادی]";
     document.getElementById('routeTitle').innerText = `از ${originSt.name} به ${destSt.name} (${dirText})${dayTag}`;
@@ -115,7 +129,11 @@ function calculateRoute() {
     document.getElementById('travelTime').innerText = `حدود ${travelMinutes} دقیقه`;
 
     if (nextTrainMin !== -1) {
-        const diffMin = nextTrainMin - userMin;
+        if (booleanCheckbox.checked) {
+            const diffMin = nextTrainMin - new Date().getHours() * 60 - new Date().getMinutes();
+        }else{
+            const diffMin = nextTrainMin - userMin;
+        }
         const diffText = diffMin === 0 ? "هم‌اکنون" : `${diffMin} دقیقه دیگر`;
         document.getElementById('nextTrainTime').innerText = `${toTimeString(nextTrainMin)} (${diffText})`;
         document.getElementById('arrivalTime').innerText = toTimeString(nextTrainMin + travelMinutes);
@@ -143,6 +161,7 @@ originSelect.addEventListener('change', calculateRoute);
 destSelect.addEventListener('change', calculateRoute);
 timeInput.addEventListener('input', calculateRoute);
 nowBtn.addEventListener('click', setCurrentTime);
+booleanCheckbox.addEventListener('change', setCurrentTime);
 
 // اجرای اولیه
 loadScheduleData();

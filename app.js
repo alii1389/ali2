@@ -130,9 +130,9 @@ function calculateRoute() {
 
     if (nextTrainMin !== -1) {
         if (booleanCheckbox.checked) {
-            const diffMin = nextTrainMin - new Date().getHours() * 60 - new Date().getMinutes();
+            diffMin = nextTrainMin - new Date().getHours() * 60 - new Date().getMinutes();
         }else{
-            const diffMin = nextTrainMin - userMin;
+            diffMin = nextTrainMin - userMin;
         }
         const diffText = diffMin === 0 ? "هم‌اکنون" : `${diffMin} دقیقه دیگر`;
         document.getElementById('nextTrainTime').innerText = `${toTimeString(nextTrainMin)} (${diffText})`;

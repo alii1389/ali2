@@ -151,7 +151,7 @@ function calculateRoute() {
         if (i === firstUpcomingIdx) tr.className = 'highlight-row';
         
         const m = toMinutes(t);
-        let status = m < userMin ? "حرکت کرده" : (i === firstUpcomingIdx ? "⭐ قطار بعدی" : "آینده");
+        let status = m < new Date().getHours() * 60 - new Date().getMinutes() ? "حرکت کرده" : (i === firstUpcomingIdx ? "⭐ قطار بعدی" : "آینده");
         
         tr.innerHTML = `<td>${i + 1}</td><td><strong>${t}</strong></td><td>${status}</td>`;
         tbody.appendChild(tr);

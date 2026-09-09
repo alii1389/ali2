@@ -129,6 +129,7 @@ function calculateRoute() {
     document.getElementById('travelTime').innerText = `حدود ${travelMinutes} دقیقه`;
 
     if (nextTrainMin !== -1) {
+        let diffMin = 0;
         if (booleanCheckbox.checked) {
             diffMin = nextTrainMin - new Date().getHours() * 60 - new Date().getMinutes();
         }else{

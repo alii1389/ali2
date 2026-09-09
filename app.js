@@ -163,7 +163,7 @@ originSelect.addEventListener('change', calculateRoute);
 destSelect.addEventListener('change', calculateRoute);
 timeInput.addEventListener('input', calculateRoute);
 nowBtn.addEventListener('click', setCurrentTime);
-booleanCheckbox.addEventListener('change', setCurrentTime);
+booleanCheckbox.addEventListener('change', calculateRoute);
 
 // اجرای اولیه
 loadScheduleData();

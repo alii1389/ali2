@@ -2,17 +2,17 @@
   "last_updated": "2026-09-07",
   "stations": [
     { "id": "ghods", "name": "قدس", "offsetSouth": 0 },
-    { "id": "baharestan", "name": "بهارستان", "offsetSouth": 2 },
-    { "id": "golestan", "name": "گلستان", "offsetSouth": 4 },
-    { "id": "mofatteh", "name": "مفتح", "offsetSouth": 6 },
-    { "id": "alikhani", "name": "شهید علیخانی", "offsetSouth": 8 },
-    { "id": "jaber", "name": "جابر", "offsetSouth": 10 },
-    { "id": "kaveh", "name": "کاوه", "offsetSouth": 12 },
-    { "id": "chamran", "name": "شهید چمران", "offsetSouth": 14 },
-    { "id": "bahonar", "name": "شهید باهنر", "offsetSouth": 16 },
-    { "id": "shohada", "name": "شهدا", "offsetSouth": 18 },
-    { "id": "takhti", "name": "تختی", "offsetSouth": 20 },
-    { "id": "emam_hossein", "name": "امام حسین (دروازه دولت)", "offsetSouth": 22 },
+    { "id": "baharestan", "name": "بهارستان", "offsetSouth": 3 },
+    { "id": "golestan", "name": "گلستان", "offsetSouth": 5 },
+    { "id": "mofatteh", "name": "مفتح", "offsetSouth": 7 },
+    { "id": "alikhani", "name": "شهید علیخانی", "offsetSouth": 9 },
+    { "id": "jaber", "name": "جابر", "offsetSouth": 11 },
+    { "id": "kaveh", "name": "کاوه", "offsetSouth": 13 },
+    { "id": "chamran", "name": "شهید چمران", "offsetSouth": 15 },
+    { "id": "bahonar", "name": "شهید باهنر", "offsetSouth": 17 },
+    { "id": "shohada", "name": "شهدا", "offsetSouth": 19 },
+    { "id": "takhti", "name": "تختی", "offsetSouth": 21 },
+    { "id": "emam_hossein", "name": "امام حسین (دروازه دولت)", "offsetSouth": 23 },
     { "id": "enqelab", "name": "انقلاب", "offsetSouth": 25 },
     { "id": "sio_se_pol", "name": "سی و سه پل", "offsetSouth": 27 },
     { "id": "shariati", "name": "شریعتی", "offsetSouth": 29 },
@@ -20,7 +20,7 @@
     { "id": "daneshgah", "name": "دانشگاه", "offsetSouth": 33 },
     { "id": "kargar", "name": "کارگر", "offsetSouth": 35 },
     { "id": "koy_emam", "name": "کوی امام", "offsetSouth": 37 },
-    { "id": "defa_moghaddas", "name": "دفاع مقدس (صفه)", "offsetSouth": 40 }
+    { "id": "defa_moghaddas", "name": "دفاع مقدس (صفه)", "offsetSouth": 39 }
   ],
   "weekday": {
     "southTimes": [
